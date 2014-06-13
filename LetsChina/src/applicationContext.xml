@@ -23,7 +23,7 @@
 		<property name="jdbcUrl"
 			value="jdbc:mysql://localhost:3306/ead?useUnicode=true&amp;characterEncoding=utf-8" />
 		<property name="user" value="root" />
-		<property name="password" value="ltca" />
+		<property name="password" value="zjb" />
 		<property name="maxPoolSize" value="20" />
 		<property name="minPoolSize" value="1" />
 		<property name="initialPoolSize" value="1" />
@@ -67,7 +67,7 @@
 		<aop:pointcut id="serviceOperation" expression="execution(* com.ltca.service.*.*(..))" />
 		<aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice" />
 	</aop:config>
-	
+
 	<bean id="springUtil" class="com.ltca.util.SpringUtil" lazy-init="false" />
 
 	<bean id="jacksonObjectMapper" class="org.codehaus.jackson.map.ObjectMapper"
@@ -82,5 +82,45 @@
 				<ref bean="jacksonMessageConverter" />
 			</list>
 		</property>
+	</bean>
+
+	<bean id="image.accept.extensions" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key=".jpg" value="true" />
+				<entry key=".gif" value="true" />
+				<entry key=".jpeg" value="true" />
+				<entry key=".bmp" value="true" />
+				<entry key=".png" value="true" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="image.max.size" class="java.lang.Integer">
+		<constructor-arg type="int" value="10485760" />
+	</bean>
+
+	<bean id="ltca.http.url" class="java.lang.String">
+		<!-- <constructor-arg type="java.lang.String" value="http://114.112.95.126" 
+			/> -->
+		<constructor-arg type="java.lang.String" value="http://localhost:8080" />
+	</bean>
+
+	<bean id="ltca.disk.path" class="java.lang.String">
+		<constructor-arg type="java.lang.String" value="FileDisk" />
+	</bean>
+
+
+	<bean id="fileUploadUtil" class="com.ltca.util.FileUploadUtil"
+		scope="prototype">
+		<property name="fileDisk" ref="ltca.disk.path" />
+		<property name="domain" ref="ltca.http.url" />
+		<property name="acceptExtensions" ref="image.accept.extensions" />
+		<property name="imageMaxSize" ref="image.max.size" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760" />
 	</bean>
 </beans>
