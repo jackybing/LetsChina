@@ -31,4 +31,6 @@ public interface BaseDao<T,PK extends Serializable> {
 	
 	public void delete(PK[] ids);
 	
+	public List<T> getListForPaging(int pagenum,int pagesize,String pagingHql);
+	
 }

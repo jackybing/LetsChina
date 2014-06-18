@@ -93,5 +93,10 @@ public class BaseDaoImpl<T, PK extends Serializable> implements BaseDao<T, PK> {
 		Assert.notNull(entity,"entity is required");
 		getSession().update(entity);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> getListForPaging(int pagenum,int pagesize,String pagingHql){
+		return (List<T>)this.getSession().createQuery(pagingHql).setFirstResult(pagenum*pagesize).setMaxResults(pagesize).list();
+	}
 
 }
