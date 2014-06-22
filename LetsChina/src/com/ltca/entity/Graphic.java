@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity(name="graphic")
 public class Graphic implements Serializable {
@@ -18,6 +19,8 @@ public class Graphic implements Serializable {
 	private String disk;//图片本地地址
 	
 	private Boolean isMain;//首要图片，即作为活动或者路线展示的主要图片
+	
+	private BaseModal baseModal;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -51,6 +54,14 @@ public class Graphic implements Serializable {
 	}
 	public void setIsMain(Boolean isMain) {
 		this.isMain = isMain;
+	}
+	
+	@ManyToOne
+	public BaseModal getBaseModal() {
+		return baseModal;
+	}
+	public void setBaseModal(BaseModal baseModal) {
+		this.baseModal = baseModal;
 	}
 	
 }

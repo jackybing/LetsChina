@@ -1,6 +1,7 @@
 package com.ltca.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.Type;
 
@@ -21,6 +24,8 @@ public class BaseModal implements Serializable {
 	private Integer id;
 	private String title;
 	private String content;//正文
+	
+	private List<Graphic> graphics;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -47,6 +52,15 @@ public class BaseModal implements Serializable {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	@OneToMany(mappedBy="baseModal")
+	@OrderBy("isMain")
+	public List<Graphic> getGraphics() {
+		return graphics;
+	}
+	public void setGraphics(List<Graphic> graphics) {
+		this.graphics = graphics;
 	}
 	
 }
