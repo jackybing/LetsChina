@@ -8,5 +8,6 @@ import com.ltca.service.GraphicService;
 @Service("graphicServiceImpl")
 public class GraphicServiceImpl extends BaseServiceImpl<Graphic, Integer> implements
 		GraphicService {
+	
 
 }

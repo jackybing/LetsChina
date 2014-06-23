@@ -21,7 +21,10 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
 	protected FileUploadUtil fileUploadUtil;
 	
 	protected JSONArray jsonArray;
-	protected JSONObject jsonObject;
+	protected JSONObject jsonObject;  
+	
+	protected JSONArray jsonArray2;
+	protected JSONObject jsonObject2;
 	
 	public void delete(T entity) {
 		baseDao.delete(entity);

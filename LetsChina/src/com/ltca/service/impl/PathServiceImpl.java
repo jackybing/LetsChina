@@ -1,11 +1,9 @@
 package com.ltca.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.jms.Session;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -25,16 +23,12 @@ public class PathServiceImpl extends BaseServiceImpl<Path, Integer> implements
 	private PathDao pathDao;
 	@Resource(name="graphicDaoImpl")
 	private GraphicDao graphicDao;
-	private JSONArray jsonArray;
-	private JSONObject jsonObject;  
 	
-	private JSONArray jsonArray2;
-	private JSONObject jsonObject2;
 	
 	public JSONArray getListForPaging(int pagenum, int pagesize,
 			String pagingHql) {
 		// TODO Auto-generated method stub
-		List<Path> paths=pathDao.getListForPaging(pagenum, pagesize, pagingHql);
+		List<Path> paths=getListForPaging(pagenum, pagesize, pagingHql);
 		
 		
 		for (Path path : paths) {
