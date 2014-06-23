@@ -1,12 +1,15 @@
 package com.ltca.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity(name="user")
 public class User implements Serializable {
@@ -21,6 +24,11 @@ public class User implements Serializable {
 	private String avatarDisk;//头像本地地址
 	
 	private int score;//用户积分
+	
+	private List<Question> questions;
+	
+	private List<Answer> answers;//回帖集合
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -79,5 +87,13 @@ public class User implements Serializable {
 	public void setScore(int score) {
 		this.score = score;
 	}
-		
+	
+	@OneToMany(mappedBy="asker")
+	public List<Question> getQuestions() {
+		return questions;
+	}
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+	
 }

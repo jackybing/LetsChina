@@ -1,6 +1,7 @@
 package com.ltca.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,7 +26,11 @@ public class BaseModal implements Serializable {
 	private String title;
 	private String content;//正文
 	
+	private Date date;
+	
 	private List<Graphic> graphics;
+	
+	private List<Tag> tags;//标签项
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -63,4 +68,20 @@ public class BaseModal implements Serializable {
 		this.graphics = graphics;
 	}
 	
+	@Column(name="date")
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}	
+	
+	@OneToMany(mappedBy="baseModal")
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
 }
