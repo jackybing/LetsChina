@@ -9,7 +9,7 @@ import com.ltca.service.QuestionService;
 
 public class QuestionServiceImpl extends BaseServiceImpl<Question, Integer> implements
 		QuestionService {
-	@Override
+	
 	public JSONArray getListForPaging(int pagenum, int pagesize,
 			String pagingHql) {
 		// TODO Auto-generated method stub

@@ -3,15 +3,25 @@ package com.ltca.service.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ltca.dao.BaseDao;
 import com.ltca.service.BaseService;
+import com.ltca.util.FileUploadUtil;
 
 public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<T, PK>  {
 
 	@Autowired
 	private BaseDao<T, PK> baseDao;
+	
+	@Autowired
+	protected FileUploadUtil fileUploadUtil;
+	
+	protected JSONArray jsonArray;
+	protected JSONObject jsonObject;
 	
 	public void delete(T entity) {
 		baseDao.delete(entity);
