@@ -9,6 +9,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ltca.dao.BaseDao;
+import com.ltca.entity.Graphic;
 import com.ltca.service.BaseService;
 import com.ltca.util.FileUploadUtil;
 
@@ -60,5 +61,9 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
 
 	public void update(T entity) {
 		baseDao.update(entity);
+	}
+	
+	public List<T> getListForPaging(int pagenum,int pagesize,String pagingHql){
+		return baseDao.getListForPaging(pagenum, pagesize, pagingHql);
 	}
 }

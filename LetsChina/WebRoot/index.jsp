@@ -17,8 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
-<!-- <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/test.js"></script> -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -34,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		选择文件:<input type="file" name="file"> <input type="submit"
 			value="提交">
 	</form>
+	<button onclick="testJsonList()">test</button>
 	
 </body>
 </html>

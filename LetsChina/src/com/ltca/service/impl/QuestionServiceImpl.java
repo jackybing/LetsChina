@@ -21,7 +21,7 @@ public class QuestionServiceImpl extends BaseServiceImpl<Question, Integer>
 	@Resource(name="questionDaoImpl")
 	private QuestionDao questionDao;
 
-	public JSONArray getListForPaging(int pagenum, int pagesize,
+	public JSONArray getPagingList(int pagenum, int pagesize,
 			String pagingHql) {
 		List<Question> questions=getListForPaging(pagenum, pagesize, pagingHql);
 		jsonArray=new JSONArray();

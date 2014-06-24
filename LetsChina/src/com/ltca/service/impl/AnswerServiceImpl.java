@@ -22,10 +22,9 @@ public class AnswerServiceImpl extends BaseServiceImpl<Answer, Integer> implemen
 	@Resource(name="answerDaoImpl")
 	private AnswerDao answerDao;
 	
-	public JSONArray getListForPaging(int questionID,int pagenum, int pagesize,
+	public JSONArray getPagingList(int pagenum, int pagesize,
 			String pagingHql) {
-		@SuppressWarnings("unchecked")
-		List<Answer> answers=getListForPaging(questionID,pagenum, pagesize, pagingHql);
+		List<Answer> answers=getListForPaging(pagenum, pagesize, pagingHql);
 		jsonArray=new JSONArray();
 		for (Answer answer : answers) {
 			jsonObject=new JSONObject();

@@ -29,5 +29,7 @@ public interface BaseService<T, PK extends Serializable> {
 	public void delete(PK id);
 
 	public void delete(PK[] ids);
+	
+	public List<T> getListForPaging(int pagenum,int pagesize,String pagingHql);
 }
 	
