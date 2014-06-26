@@ -30,6 +30,7 @@ public class PathServiceImpl extends BaseServiceImpl<Path, Integer> implements
 		// TODO Auto-generated method stub
 		List<Path> paths=getListForPaging(pagenum, pagesize, pagingHql);
 		
+		jsonArray=new JSONArray();
 		
 		for (Path path : paths) {
 			jsonObject=new JSONObject();
@@ -58,6 +59,7 @@ public class PathServiceImpl extends BaseServiceImpl<Path, Integer> implements
 		Path path=get(pathId);
 		for (Graphic graphic : graphics) {
 			path.getGraphics().add(graphic);
+			graphic.setBaseModal(path);
 			graphicDao.save(graphic);
 		}	
 		update(path);

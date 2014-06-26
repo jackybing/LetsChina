@@ -28,8 +28,8 @@
 		<level value="error" />
 		<appender-ref ref="ROLLINGFILE" />
 	</logger>
-	<logger name="org.springframework">
-		<level value="warn" />
+	<logger name="org.springframework.web">
+		<level value="info" />
 		<appender-ref ref="CONSOLE" />
 	</logger>
 	<logger name="org.hibernate">
