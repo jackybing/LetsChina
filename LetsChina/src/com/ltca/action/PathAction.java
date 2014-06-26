@@ -63,20 +63,9 @@ public class PathAction {
 		msg=new JSONObject();
 		msg.put("totalNum", totalNum);
 		msg.put("pathArray", paths.toString());
+		
 		return msg.toString();
 	}
-	
-	@RequestMapping("/test")
-	@ResponseBody
-	public String test(@RequestBody Path path){
-		System.out.println(path.getTitle());
-		msg=new JSONObject();
-		msg.put("pathArray", 1);
-		return msg.toString();
-	}
-	
-	
-	
-	
+		
 	
 }

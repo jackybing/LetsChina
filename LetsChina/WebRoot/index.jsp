@@ -36,5 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 	<button onclick="testJsonList()">test</button>
 	
+	<button onclick="testJsonList2()">test2</button>
+	
 </body>
 </html>

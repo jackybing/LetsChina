@@ -85,9 +85,54 @@ function testJsonList(){
 		contentType : "application/json"
 	});*/
 	
+	/*var user={email:'zjbcnblog@163.com',password:'zjb'};
+	//根据用户输入的信息即邮箱与密码来构建user类，传到后台用于验证。
+	$.ajax({
+		type : "POST",
+		url : "user/login",
+		data : JSON.stringify(user),
+		success : function(data) {
+			alert(JSON.stringify(data));
+			//data为json数据格式：'{status:'200'}，返回执行状态码：200是成功，404是失败
+		},
+		contentType : "application/json"
+	});	*/
 	
+	/*var user={email:'zjbcnblog@gmail.com',password:'zjb',score:20,userName:'roby'};
+	//构造User实体类的基本属性值，传到后台进行创建工作。这里只是只在user的基本属性，可以查看User类，对于修改头像问题，需要先上传头像，再使用更新头像的接口
+	$.ajax({
+		type : "POST",
+		url : "user/regist",
+		data : JSON.stringify(user),
+		success : function(data) {
+			alert(JSON.stringify(data));
+			//data为json数据格式：'{status:'200'}，返回执行状态码：200是成功，404是失败
+		},
+		contentType : "application/json"
+	});*/	
 	
+	/*$.ajax({
+		type : "POST",
+		url : "user/test",
+		data : '',
+		success : function(data) {
+			alert(JSON.stringify(data));
+			//data为json数据格式：'{status:'200'}，返回执行状态码：200是成功，404是失败
+		},
+		contentType : "application/json"
+	});	*/
 	
-	
-	
+	/*var avatar={disk:'d:\abc.jpg',url:'localhost:8080/disk/abc.jpg'};
+	//构建的avatar对象中的disk与url属性是成功上传图片后返回的数据，具体请参考图片上传接口
+	$.ajax({
+		type : "POST",
+		url : "user/updateAvatar",
+		data : JSON.stringify(user),
+		success : function(data) {
+			alert(JSON.stringify(data));
+			//data为json数据格式：'{status:'200'}，返回执行状态码：200是成功，404是失败
+		},
+		contentType : "application/json"
+	});*/
 }
+
