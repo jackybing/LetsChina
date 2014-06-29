@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ltca.bean.Avatar;
+import com.ltca.bean.Password;
 import com.ltca.entity.User;
 import com.ltca.service.UserService;
+import com.ltca.util.DEncryptionUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -26,6 +28,7 @@ public class UserAction {
 	@RequestMapping("/login")
 	@ResponseBody
 	public String login(@RequestBody User user,HttpSession session){
+		user.setPassword(DEncryptionUtils.saltMD5Encoder(user.getPassword()));
 		
 		User loginUser=userService.checkUser(user);
 		msg=new JSONObject();
@@ -42,6 +45,8 @@ public class UserAction {
 	@RequestMapping("/regist")
 	@ResponseBody
 	public String regist(@RequestBody User user,HttpSession session){
+		user.setPassword(DEncryptionUtils.saltMD5Encoder(user.getPassword()));
+		
 		Integer userID=userService.save(user);
 		msg=new JSONObject();
 		if(userID>0){
@@ -61,6 +66,28 @@ public class UserAction {
 		msg.put("status", 200);
 		return msg.toString();
 	}
+	
+	@RequestMapping("/updatePassword")
+	@ResponseBody
+	public String updatePassword(@RequestBody Password password,HttpSession session){
+		Integer userID=1;
+		//User user=userService.get((Integer) session.getAttribute("userID"));
+		
+		User user=userService.get(userID);
+
+		msg=new JSONObject();
+		System.out.println(user.getPassword().equals(DEncryptionUtils.saltMD5Encoder(password.getOldPassword())));
+		if(user==null||!user.getPassword().equals(DEncryptionUtils.saltMD5Encoder(password.getOldPassword()))){
+			msg.put("status", 404);
+		}else {
+			user.setPassword(DEncryptionUtils.saltMD5Encoder(password.getNewPassword()));
+			userService.update(user);
+			msg.put("status", 200);
+		}
+		
+		return msg.toString();
+	}
+	
 	
 	
 }

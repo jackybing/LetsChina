@@ -12,6 +12,7 @@ import net.sf.json.JSONObject;
 import com.ltca.dao.QuestionDao;
 import com.ltca.entity.Graphic;
 import com.ltca.entity.Question;
+import com.ltca.entity.Tag;
 import com.ltca.entity.User;
 import com.ltca.service.QuestionService;
 
@@ -52,6 +53,11 @@ public class QuestionServiceImpl extends BaseServiceImpl<Question, Integer>
 			jsonArray.add(jsonObject);
 		}
 		return jsonArray;
+		
+	}
+	
+	public void updateTag(Integer questionID,List<Tag> tags){
+		questionDao.updateTag(questionID, tags);
 	}
 
 }

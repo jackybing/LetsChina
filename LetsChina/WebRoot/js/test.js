@@ -1,27 +1,6 @@
 function testJsonList(){
-	/*var postParams=[{addInfo:"tianjin"},{addInfo:"nanchang"}];
-	alert(JSON.stringify(postParams));
-	$.ajax( {
-		type : "POST",
-		url : "user/addAddresses/1",//注意不要写成/user/demo,否则请求的url将没有项目名称，即IP:port/user/demo形式
-		data : JSON.stringify(postParams),
-		success : function(data) {
-			alert(JSON.stringify(data));
-		},
-		contentType : "application/json"
-	});*/
 	
-	/*$.ajax( {
-		type : "POST",
-		url : "test",//注意不要写成/user/demo,否则请求的url将没有项目名称，即IP:port/user/demo形式
-		data : "",
-		success : function(data) {
-			alert(JSON.stringify(data));
-		},
-		contentType : "application/json"
-	});*/
-	
-	/*var newPath={title:'tiananmen',content:'hello world',date:'2014-06-16',price:1000}
+	/*var newPath={title:'tiananmen',content:'hello world',date:'2014-06-16 13:40:00',price:1000}
 	$.ajax( {
 		type : "POST",
 		url : "path/create",//注意不要写成/user/demo,否则请求的url将没有项目名称，即IP:port/user/demo形式
@@ -134,5 +113,20 @@ function testJsonList(){
 		},
 		contentType : "application/json"
 	});*/
+	
+	/*var password={oldPassword:'zjb',newPassword:'abc'};
+	//构建的password对象中的oldPassword与newPassword属性是用户的旧密码与新密码
+	$.ajax({
+		type : "POST",
+		url : "user/updatePassword",
+		data : JSON.stringify(password),
+		success : function(data) {
+			alert(JSON.stringify(data));
+			//data为json数据格式：'{status:'200'}，返回执行状态码：200是成功，404是失败
+		},
+		contentType : "application/json"
+	});*/
+	
+	
 }
 

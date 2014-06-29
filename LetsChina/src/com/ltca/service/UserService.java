@@ -6,4 +6,5 @@ import com.ltca.entity.User;
 public interface UserService extends BaseService<User, Integer> {
 	public void updateAvatar(Integer userID,Avatar avatar);
 	public User checkUser(User user);
+	
 }

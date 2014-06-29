@@ -56,6 +56,7 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
 	}
 
 	public PK save(T entity) {
+		
 		return baseDao.save(entity);
 	}
 

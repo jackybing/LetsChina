@@ -15,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity(name="baseModal")
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -68,6 +71,8 @@ public class BaseModal implements Serializable {
 		this.graphics = graphics;
 	}
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")  
 	@Column(name="date")
 	public Date getDate() {
 		return date;
