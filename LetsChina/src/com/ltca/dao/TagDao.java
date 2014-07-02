@@ -5,5 +5,5 @@ import java.util.List;
 import com.ltca.entity.Tag;
 
 public interface TagDao extends BaseDao<Tag, Integer> {
-	
+	public List<Tag> getAllTagsForModal(Integer modalID);
 }

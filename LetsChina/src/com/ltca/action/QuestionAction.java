@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ltca.entity.Path;
@@ -42,4 +44,18 @@ public class QuestionAction {
 		msg.put("status", 200);
 		return msg.toString();
 	}
+	
+	@RequestMapping("/paging/{questionID}")
+	@ResponseBody
+	public String  paging(@RequestParam int pagenum, @RequestParam int pagesize){
+		JSONArray paths=questionService.getPagingList(pagenum, pagesize, "from path  order by date");
+		Long totalNum=questionService.getTotalCount();
+		msg=new JSONObject();
+		msg.put("totalNum", totalNum);
+		msg.put("pathArray", paths.toString());
+		
+		return msg.toString();
+	}
+	
+	
 }

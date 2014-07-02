@@ -7,4 +7,5 @@ import com.ltca.entity.Tag;
 
 public interface QuestionDao extends BaseDao<Question, Integer> {
 	public void updateTag(Integer questionID,List<Tag> tags);
+	
 }

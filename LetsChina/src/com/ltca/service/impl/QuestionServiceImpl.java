@@ -10,6 +10,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.ltca.dao.QuestionDao;
+import com.ltca.dao.TagDao;
 import com.ltca.entity.Graphic;
 import com.ltca.entity.Question;
 import com.ltca.entity.Tag;
@@ -21,6 +22,9 @@ public class QuestionServiceImpl extends BaseServiceImpl<Question, Integer>
 		implements QuestionService {
 	@Resource(name="questionDaoImpl")
 	private QuestionDao questionDao;
+	
+	@Resource(name="tagDaoImpl")
+	private TagDao tagDao;
 
 	public JSONArray getPagingList(int pagenum, int pagesize,
 			String pagingHql) {
@@ -40,7 +44,16 @@ public class QuestionServiceImpl extends BaseServiceImpl<Question, Integer>
 				jsonArray2.add(jsonObject2);
 			}
 			
-			jsonObject.put("graphics", jsonArray2);
+			jsonObject.put("graphics", jsonArray2);//添加图片
+			
+			for (Tag tag : tagDao.getAllTagsForModal(question.getId())) {
+				jsonObject2=new JSONObject();
+				jsonObject2.put("tagID", tag.getId());
+				jsonObject2.put("type", tag.getType());
+				jsonArray2.add(jsonObject2);
+			}
+			
+			jsonObject.put("tags", jsonArray2);//添加标签
 			
 			jsonObject2=new JSONObject();
 			User asker=question.getAsker();
